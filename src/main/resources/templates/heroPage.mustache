@@ -1,5 +1,19 @@
 {{> header}}
 
 <p>Welcome to thoughtBucks</p>
+<form action="/api/order" method="POST">
+    <select>
+        <option value="Latte">Latte</option>
+        <option value="Long Black">Long Black</option>
+    </select>
+
+    <select>
+        <option value=null>default</option>
+        <option value=20>a little</option>
+        <option value=80>a lot</option>
+    </select>
+
+    <input type="submit" value="创建订单" >
+</form>
 
 {{> footer}}
