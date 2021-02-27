@@ -10,9 +10,9 @@ import java.lang.IllegalArgumentException
 class Store{
     fun makeCoffee(order: CoffeeOrder): Coffee {
         return when(order.type) {
-            "Latte" -> Latte()
-            "Cappuccino" -> Cappuccino()
-            "Long Black" -> LongBlack()
+            "Latte" -> Latte(size = order.size)
+            "Cappuccino" -> Cappuccino(size = order.size)
+            "Long Black" -> LongBlack(size = order.size)
             else -> throw IllegalArgumentException("Unknown coffee type")
         }
     }
