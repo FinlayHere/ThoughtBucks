@@ -1,7 +1,6 @@
 package com.thoughtBucks.store
 
 
-import com.thoughtBucks.coffee.LongBlack
 import com.thoughtBucks.order.CoffeeOrder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -44,9 +43,9 @@ internal class StoreTest {
 
     @Test
     fun `should have sugar when make coffee`() {
-        val longBlackOrder = CoffeeOrder(type = "Latte", size = "s")
+        val longBlackOrder = CoffeeOrder(type = "Long Black", size = "s")
         val latteOrder = CoffeeOrder(type = "Latte", size = "s")
-        assertThat(store.orderCoffee(longBlackOrder).sugar).isEqual(0)
-        assertThat(store.orderCoffee(latteOrder).sugar).isEqual(20)
+        assertThat(store.orderCoffee(longBlackOrder).sugar).isEqualTo(0)
+        assertThat(store.orderCoffee(latteOrder).sugar).isEqualTo(20)
     }
 }
