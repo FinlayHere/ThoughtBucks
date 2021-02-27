@@ -1,0 +1,13 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /thoughtbucks
+spring:
+  datasource:
+    username: postgres
+    password: 123
+    url: jdbc:postgresql://localhost:5432/demo_order
+    initialization-mode: always
+    initialize: true
+    continue-on-error: true
+    driver-class-name: org.postgresql.Driver
