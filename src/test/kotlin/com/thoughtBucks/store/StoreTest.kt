@@ -1,40 +1,36 @@
 package com.thoughtBucks.store
 
 
-import com.thoughtBucks.coffee.Coffee
 import com.thoughtBucks.order.CoffeeOrder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import java.lang.IllegalArgumentException
 
 internal class StoreTest {
+    private var store = Store()
+
     @Test
     fun `should store provide coffee when store receive order`() {
-        val store = Store()
         val order = CoffeeOrder()
-        assertThat(store.makeCoffee(order)).isInstanceOf(Coffee().javaClass)
+        assertThat(store.makeCoffee(order).whoIamI()).isEqualTo("Coffee")
     }
 
     @Test
     fun `should store provide latte coffee when make coffee with order type coffee`() {
-        val store = Store()
         val order = CoffeeOrder(type = "Latte")
         assertThat(store.makeCoffee(order).type).isEqualTo("Latte")
     }
 
     @Test
     fun `should store provide latte coffee when make coffee with order type Cappuccino`() {
-        val store = Store()
         val order = CoffeeOrder(type = "Cappuccino")
         assertThat(store.makeCoffee(order).type).isEqualTo("Cappuccino")
     }
 
     @Test
     fun `should throw exception when make coffee given unknown coffee type`() {
-        val store = Store()
         val order = CoffeeOrder(type = "Cat Shit")
-        val expectation = assertThrows<IllegalArgumentException>("Unknown coffee type"){
+        assertThrows<IllegalArgumentException>("Unknown coffee type") {
             store.makeCoffee(order)
         }
     }
