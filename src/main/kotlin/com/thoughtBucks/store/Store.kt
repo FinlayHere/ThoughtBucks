@@ -8,13 +8,9 @@ import com.thoughtBucks.order.CoffeeOrder
 import java.lang.IllegalArgumentException
 
 class Store{
-    fun makeCoffee(order: CoffeeOrder): Coffee {
-        return when(order.type) {
-            "Latte" -> Latte(size = order.size)
-            "Cappuccino" -> Cappuccino(size = order.size)
-            "Long Black" -> LongBlack(size = order.size)
-            else -> throw IllegalArgumentException("Unknown coffee type")
-        }
-    }
+    private val factory = CoffeeFactory()
 
+    fun orderCoffee(order: CoffeeOrder): Coffee {
+        return factory.makeCoffee(order)
+    }
 }
