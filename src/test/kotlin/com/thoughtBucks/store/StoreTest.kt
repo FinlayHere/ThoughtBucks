@@ -14,4 +14,11 @@ internal class StoreTest {
         assertThat(store.makeCoffee(order)).isInstanceOf(Coffee().javaClass)
     }
 
+    @Test
+    fun `should store provide latte coffee when make coffee with order type coffee`() {
+        val store = Store()
+        val order = CoffeeOrder(type = "Latte")
+        assertThat(store.makeCoffee(order).type).isEqualTo("Latte")
+    }
+
 }
