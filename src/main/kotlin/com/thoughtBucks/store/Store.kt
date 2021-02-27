@@ -10,7 +10,7 @@ class Store{
             "Latte" -> Coffee("Latte")
             "Cappuccino" -> Coffee("Cappuccino")
             "Long Black" -> Coffee("Long Black")
-            else -> Coffee()
+            else -> throw IllegalArgumentException("Unknown coffee type")
         }
     }
 
