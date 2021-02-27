@@ -34,5 +34,10 @@ internal class StoreTest {
             store.makeCoffee(order)
         }
     }
+    @Test
+    fun `should have size of coffee when make coffee`() {
+        var order = CoffeeOrder(type = "Latte", size = "s")
+        assertThat(store.makeCoffee(order).size).isEqualTo("S")
+    }
 
 }
