@@ -21,4 +21,11 @@ internal class StoreTest {
         assertThat(store.makeCoffee(order).type).isEqualTo("Latte")
     }
 
+    @Test
+    fun `should store provide latte coffee when make coffee with order type Cappuccino`() {
+        val store = Store()
+        val order = CoffeeOrder(type = "Cappuccino")
+        assertThat(store.makeCoffee(order).type).isEqualTo("Cappuccino")
+    }
+
 }
