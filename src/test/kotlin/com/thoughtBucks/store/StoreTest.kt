@@ -48,4 +48,10 @@ internal class StoreTest {
         assertThat(store.orderCoffee(longBlackOrder).sugar).isEqualTo(0)
         assertThat(store.orderCoffee(latteOrder).sugar).isEqualTo(20)
     }
+
+    @Test
+    fun  `should make coffee with certain sugar given order has sugar`() {
+        val longBlackWithSugar = CoffeeOrder(type = "Long Black", size = "m", sugar = 10)
+        assertThat(store.orderCoffee(longBlackWithSugar).sugar).isEqualTo(20)
+    }
 }
