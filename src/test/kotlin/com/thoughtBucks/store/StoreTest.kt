@@ -5,6 +5,8 @@ import com.thoughtBucks.coffee.Coffee
 import com.thoughtBucks.order.CoffeeOrder
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import java.lang.IllegalArgumentException
 
 internal class StoreTest {
     @Test
@@ -26,6 +28,15 @@ internal class StoreTest {
         val store = Store()
         val order = CoffeeOrder(type = "Cappuccino")
         assertThat(store.makeCoffee(order).type).isEqualTo("Cappuccino")
+    }
+
+    @Test
+    fun `should throw exception when make coffee given unknown coffee type`() {
+        val store = Store()
+        val order = CoffeeOrder(type = "Cat Shit")
+        val expectation = assertThrows<IllegalArgumentException>("Unknown coffee type"){
+            store.makeCoffee(order)
+        }
     }
 
 }
