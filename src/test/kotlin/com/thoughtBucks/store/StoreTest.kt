@@ -12,7 +12,7 @@ internal class StoreTest {
     @Test
     fun `should store provide coffee when store receive order`() {
         val order = CoffeeOrder(type = "Latte", size = "s")
-        assertThat(store.orderCoffee(order).whoIamI()).isEqualTo("Coffee")
+        assertThat(store.orderCoffee(order).whoAmI()).isEqualTo("Coffee")
     }
 
     @Test
