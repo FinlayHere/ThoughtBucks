@@ -21,7 +21,7 @@ class OrderControllerTest {
     fun `should return 200 when create order successful`() {
         val requestBody = "{\"type\":\"Long Black\", \"size\":\"s\", \"sugar\":\"10\"}"
         val mvcResult = mockMvc.perform(MockMvcRequestBuilders
-                .post("/thoughtBucks/api/order")
+                .post("/api/order")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestBody))
                 .andReturn()
