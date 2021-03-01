@@ -6,7 +6,7 @@ spring:
   datasource:
     username: postgres
     password: 123
-    url: jdbc:postgresql://localhost:5432/demo_order
+    url: jdbc:postgresql://localhost:5432/ThoughtBucks
     initialization-mode: always
     initialize: true
     continue-on-error: true
