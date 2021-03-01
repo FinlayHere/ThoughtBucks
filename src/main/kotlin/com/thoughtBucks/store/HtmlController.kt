@@ -11,6 +11,7 @@ class HtmlController {
     @GetMapping("/")
     fun heroPage(model: Model): String {
         model["title"] = "ThoughBucks"
+        model["content"] = "Welcome to ThoughtBucks"
         return "heroPage"
     }
 

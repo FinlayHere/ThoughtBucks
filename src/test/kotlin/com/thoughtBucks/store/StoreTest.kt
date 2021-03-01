@@ -3,16 +3,22 @@ package com.thoughtBucks.store
 
 import com.thoughtBucks.order.CoffeeOrder
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 internal class StoreTest {
-    private var store = Store()
+    private lateinit var store: Store
+
+    @BeforeEach
+    fun initEnv() {
+        store = Store()
+    }
 
     @Test
     fun `should store provide coffee when store receive order`() {
         val order = CoffeeOrder(type = "Latte", size = "s")
-        assertThat(store.orderCoffee(order).whoAmI()).isEqualTo("Coffee")
+        assertThat(store.orderCoffee(order).type).isEqualTo("Latte")
     }
 
     @Test
@@ -50,7 +56,7 @@ internal class StoreTest {
     }
 
     @Test
-    fun  `should make coffee with certain sugar given order has sugar`() {
+    fun `should make coffee with certain sugar given order has sugar`() {
         val longBlackWithSugarOrder = CoffeeOrder(type = "Long Black", size = "m", sugar = 10)
         assertThat(store.orderCoffee(longBlackWithSugarOrder).sugar).isEqualTo(10)
     }

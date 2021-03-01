@@ -15,6 +15,6 @@ class IntegrationTests(@Autowired val restTemplate: TestRestTemplate) {
     fun `main page contain 'ThoughtBacks'`() {
         val entity = restTemplate.getForEntity<String>("/")
         assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
-        assertThat(entity.body).contains("<h1>heroPage</h1>")
+        assertThat(entity.body).contains("<p>Welcome to ThoughtBucks</p>")
     }
 }
