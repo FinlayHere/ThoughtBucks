@@ -26,6 +26,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4")
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
+	implementation("org.flywaydb:flyway-core:5.2.4")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -65,5 +66,27 @@ tasks.jacocoTestReport {
 		xml.isEnabled = false
 		csv.isEnabled = false
 		html.destination = file("${buildDir}/jacocoHtml")
+	}
+}
+
+tasks.jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = "0.9".toBigDecimal()
+			}
+		}
+
+		rule {
+			enabled = false
+			element = "CLASS"
+			includes = listOf("org.gradle.*")
+
+			limit {
+				counter = "LINE"
+				value = "TOTALCOUNT"
+				maximum = "0.9".toBigDecimal()
+			}
+		}
 	}
 }
